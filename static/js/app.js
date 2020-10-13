@@ -1,7 +1,7 @@
 d3.json('./data/samples.json').then(data =>{
     console.log(data);
 
-    // Sort the data by Greek search results
+    // get all the ids of the patients sampled
     var ids = Object.values(data.names)
       console.log(ids);
 })
