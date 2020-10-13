@@ -2,13 +2,8 @@ d3.json('./data/samples.json').then(data =>{
     console.log(data);
 
     // Sort the data by Greek search results
-    var ids = Object.entries(data.samples).forEach(([key,value]) => {
-      console.log(key,value);
-    })
-    //  console.log(ids);
-    
-    // var ids = Object.values(data.samples)
-    //   console.log(ids);
+    var ids = Object.values(data.names)
+      console.log(ids);
 })
 
 
