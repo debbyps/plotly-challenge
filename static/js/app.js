@@ -2,8 +2,11 @@ d3.json('./data/samples.json').then(data =>{
     console.log(data);
 
     // get all the ids of the patients sampled
-    var ids = Object.values(data.names)
+    var ids = Object.values(data.samples)
       console.log(ids);
+
+    var sliceID = Object.values(ids).slice(0,9)
+        console.log(sliceID)
 })
 
 
