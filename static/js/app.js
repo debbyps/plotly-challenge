@@ -2,7 +2,7 @@ d3.json('./data/samples.json').then(data =>{
     console.log(data);
 
     // get all the ids of the patients sampled
-    var ids = Object.values(data.samples)
+    var ids = Object.values(data.names)
       console.log(ids);
     
       ids.forEach(id =>{
