@@ -4,9 +4,10 @@ d3.json('./data/samples.json').then(data =>{
     // get all the ids of the patients sampled
     var ids = Object.values(data.samples)
       console.log(ids);
-
-    var sliceID = Object.values(ids).slice(0,9)
-        console.log(sliceID)
+    
+      ids.forEach(id =>{
+        var dropDownOpt = d3.select("#selDataset").append("option").attr("value",id).text(id)
+      })
 })
 
 
