@@ -88,9 +88,61 @@ function init(){
         Plotly.newPlot("bar", data, layout);
     })
 }
+function buildBubble(id) {
+  // read the json data
+  d3.json('./data/samples.json').then(data =>{
+    // make sure to only grab the sample array for the id selected
+    let sampleData = data.samples.filter(d => d.id.toString() === id)[0]; 
+      console.log(sampleData)
+    // get only the values of the top ten reverse to get in desc ord know that in console it will look asc but on graph it will be desc
+    let ttValueArray = sampleData.sample_values
+      console.log(ttValueArray)
+    // get the ids that correspond to the values reverse to get it in desc ord know that in console it will look asc but on graph it will be desc
+    let ttIdsArray = sampleData.otu_ids
+      console.log(ttIdsArray)
+    // // map back to otu id's so id won't be read as a number 
+    // let ttOtuIds = ttIdsArray.map(d => "OTU " + d)
+    //   console.log(ttOtuIds)
+    // get the labels so when we hover over bar we know name of OTUs
+    let ttLabelArray = sampleData.otu_labels
+      console.log(ttLabelArray)
+
+    // Trace2 for the top ten data
+    var trace2 = {
+      y: ttValueArray,
+      x: ttIdsArray,
+      mode: "markers",
+      text: ttLabelArray,
+      // name: "Top Ten",
+      // type: "bar",
+      // orientation: "h"
+      marker: {
+        color: ttIdsArray,
+        opacity: [1, 0.8, 0.6, 0.4],
+        size: ttValueArray
+      }
+    };
+    console.log(trace2)
+    // data
+    var data = [trace2];
+
+    // Apply the layout
+    var layout = {
+      title: "Frequency of OTU's by ID",
+      showlegend: false,
+      height: 600,
+      width: 1200
+    }
+
+    // Render the plot to the div tag with id "bubble"
+    Plotly.newPlot("bubble", data, layout);
+})
+}
+
 function optionChanged(id){
   buildDemographics(id)
   buildTopTen(id)
+  buildBubble(id)
 }
 
 init()
