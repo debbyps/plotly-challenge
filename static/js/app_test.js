@@ -48,13 +48,14 @@ function init(){
         // make sure to only grab the sample array for the id selected
         let sampleData = data.samples.filter(d => d.id.toString() === id)[0]; 
           console.log(sampleData)
-        // get only the values of the top ten
-        let ttValueArray = sampleData.sample_values.slice(0,10)
+        // get only the values of the top ten reverse to get in desc ord
+        let ttValueArray = sampleData.sample_values.slice(0,10).reverse()
           console.log(ttValueArray)
-        // get the ids that correspond to the values
-        let ttIdsArray = sampleData.otu_ids.slice(0,10)
+        // get the ids that correspond to the values reverse to get it in desc order
+        let ttIdsArray = sampleData.otu_ids.slice(0,10).reverse()
           console.log(ttIdsArray)
 
+        
         // Trace1 for the Greek Data
         var trace1 = {
           x: ttValueArray,
