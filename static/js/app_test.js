@@ -49,8 +49,8 @@ function init(){
         let sampleData = data.samples.filter(d => d.id.toString() === id)[0]; 
           console.log(sampleData)
         // get only the values of the top ten
-        let ttFinalArray = sampleData.sample_values.slice(0,10)
-          console.log(ttFinalArray)
+        let ttValueArray = sampleData.sample_values.slice(0,10)
+          console.log(ttValueArray)
           
     })
 }
