@@ -138,4 +138,4 @@ function optionChanged(id){
   buildBubble(id)
 }
 
-init(id = 940)
+init()
