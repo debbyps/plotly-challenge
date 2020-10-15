@@ -48,21 +48,25 @@ function init(){
         // make sure to only grab the sample array for the id selected
         let sampleData = data.samples.filter(d => d.id.toString() === id)[0]; 
           console.log(sampleData)
-        // get only the values of the top ten reverse to get in desc ord
-        let ttValueArray = sampleData.sample_values.slice(0,10)
+        // get only the values of the top ten reverse to get in desc ord know that in console it will look asc but on graph it will be desc
+        let ttValueArray = sampleData.sample_values.slice(0,10).reverse()
           console.log(ttValueArray)
-        // get the ids that correspond to the values reverse to get it in desc order
-        let ttIdsArray = sampleData.otu_ids.slice(0,10)
+        // get the ids that correspond to the values reverse to get it in desc ord know that in console it will look asc but on graph it will be desc
+        let ttIdsArray = sampleData.otu_ids.slice(0,10).reverse()
           console.log(ttIdsArray)
+        // map back to otu id's so id won't be read as a number 
+        let ttOtuIds = ttIdsArray.map(d => "OTU " + d)
+          console.log(ttOtuIds)
         let ttLabelArray = sampleData.otu_labels.slice(0,10)
+          console.log(ttLabelArray)
 
         
         // Trace1 for the Greek Data
         var trace1 = {
           x: ttValueArray,
-          y: ttIdsArray,
+          y: ttOtuIds,
           text: ttLabelArray,
-          // name: "Greek",
+          name: "Top Ten",
           type: "bar",
           orientation: "h"
         };
@@ -72,14 +76,14 @@ function init(){
 
         // Apply the group bar mode to the layout
         var layout = {
-          // title: "Greek gods search results",
+          title: "Top Ten OTU's by ID",
           yaxis: {
             tickmode: "linear"
           },
           margin: {
             l: 100,
             r: 100,
-            t: 20,
+            t: 25,
             b: 20
           }
         };
