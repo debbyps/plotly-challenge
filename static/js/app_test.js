@@ -51,9 +51,9 @@ function init(){
         // get only the values of the top ten
         let ttValueArray = sampleData.sample_values.slice(0,10)
           console.log(ttValueArray)
-        
-        let ttLabelArray = sampleData.otu_ids.slice(0,10)
-        console.log(ttLabelArray)
+        // get the ids that correspond to the values
+        let ttIdsArray = sampleData.otu_ids.slice(0,10)
+          console.log(ttIdsArray)
     })
 }
 function optionChanged(id){
