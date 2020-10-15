@@ -54,6 +54,36 @@ function init(){
         // get the ids that correspond to the values
         let ttIdsArray = sampleData.otu_ids.slice(0,10)
           console.log(ttIdsArray)
+
+        // Trace1 for the Greek Data
+        var trace1 = {
+          x: ttValueArray,
+          y: ttIdsArray,
+          // text: `OTU ${ttIdsArray}`,
+          // name: "Greek",
+          type: "bar",
+          orientation: "h"
+        };
+        console.log(trace1)
+        // data
+        var data = [trace1];
+
+        // Apply the group bar mode to the layout
+        var layout = {
+          // title: "Greek gods search results",
+          yaxis: {
+            tickmode: "linear"
+          },
+          margin: {
+            l: 100,
+            r: 100,
+            t: 20,
+            b: 20
+          }
+        };
+
+        // Render the plot to the div tag with id "bar"
+        Plotly.newPlot("bar", data, layout);
     })
 }
 function optionChanged(id){
