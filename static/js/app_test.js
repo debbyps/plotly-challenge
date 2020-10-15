@@ -6,13 +6,9 @@ function init(){
     d3.json('./data/samples.json').then((data) =>{
         // display all data in json on the console
         console.log(data);
-        // get all the ids of the patients sampled
-        // let ids = Object.values(data.names)
-        //     // put into console just to see
-        //     console.log(ids);
     // for each id in data names add an option into the dropdown
-            data.names.forEach(id =>{
-                dropDown.append("option").attr("value",id).text(id)
+        data.names.forEach(id =>{
+          dropDown.append("option").attr("value",id).text(id)
       })
 
       // call the build details to pull demographic data
@@ -57,11 +53,11 @@ function init(){
         // map back to otu id's so id won't be read as a number 
         let ttOtuIds = ttIdsArray.map(d => "OTU " + d)
           console.log(ttOtuIds)
+        // get the labels so when we hover over bar we know name of OTUs
         let ttLabelArray = sampleData.otu_labels.slice(0,10)
           console.log(ttLabelArray)
 
-        
-        // Trace1 for the Greek Data
+        // Trace1 for the top ten data
         var trace1 = {
           x: ttValueArray,
           y: ttOtuIds,
