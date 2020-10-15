@@ -1,3 +1,4 @@
+
 // create an initiation to display info on html launch
 function init(){
     // use d3 to select the dropdown section of the html
@@ -12,13 +13,16 @@ function init(){
       })
 
       // call the build details to pull demographic data
-       buildDemographics(id[0]);
-       buildTopTen(id[0]);
+       buildDemographics(id);
+       buildTopTen(id);
+       
     })
+    d3.event.preventDefault();
   }  
 
 
   function buildDemographics(id) {
+ 
      // read the json data
     d3.json('./data/samples.json').then(data =>{
        let metaDataDemographics = data.metadata;
@@ -134,4 +138,4 @@ function optionChanged(id){
   buildBubble(id)
 }
 
-init()
+init(id = 940)
