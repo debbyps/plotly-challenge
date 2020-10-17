@@ -1,23 +1,28 @@
 
 // create an initiation to display info on html launch
 function init(){
+    
     // use d3 to select the dropdown section of the html
     let dropDown = d3.select("#selDataset")
+
     // read the json data
     d3.json('./data/samples.json').then((data) =>{
+ 
         // display all data in json on the console
-        // console.log(data);
+        console.log(data);
     // for each id in data names add an option into the dropdown
         data.names.forEach(id =>{
           dropDown.append("option").attr("value",id).text(id)
+          
       })
-
-      // call the build details to pull demographic data
-       buildDemographics(id);
-       buildTopTen(id);
-       
+      
+      // call the build details to data and graphs
+      // have to use data.names[0] because this will give me the first value by index in array 
+      // for init to load w default data for first test subject id
+       buildDemographics(data.names[0]);
+       buildTopTen(data.names[0]);
+       buildBubble(data.names[0])
     })
-    d3.event.preventDefault();
   }  
 
 
